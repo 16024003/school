@@ -1,0 +1,151 @@
+%==========================================================================
+%Template File
+%   Copyright (C) 2006-2009                                
+%           by Shinya Watanabe(sin@csse.muroran-it.ac.jp) 
+%==========================================================================
+\documentclass[a4j,titlepage]{jarticle}
+\usepackage{programing_report}
+
+\begin{document}
+
+%--------------------
+%以下に実験レポートのタイトル,自分のクラス名，学籍番号，氏名，提出日を書く．
+%--------------------
+
+%%\title{レポートタイトル}を記述する．
+\title{第7回 プログラミング演習 レポート}
+
+%%\author{クラス名}{学籍番号}{氏名}を記述する．
+\author{前半クラス16024003}{赤堀　冴太朗}
+
+%%\date{提出する年月日}を記述する．
+\date{2016 年 12 月1 日}
+\maketitle
+
+%--------------------
+%以下から本文を開始する．
+%--------------------
+
+\section{基礎課題１　Lecture5演習1-3}
+\subsection{ソースコード}
+\begin{itembox}[l]{ソースコード}
+\begin{verbatim}
+/*****
+name e111_2.c
+do 文字数を数える
+in int型　１つ　char型配列１つ
+out int型　１つ
+author 16024003
+day 2016.11.30
+other none
+*****/
+#include <stdio.h>
+int main(void)
+{
+    char str[11];
+    int i;
+
+    printf("１０文字以内の文字列を入力してください--->");
+    scanf("%s",str);
+
+    while(str[i] !='\0')
+    {
+        i++ ;
+    }
+
+    printf("入力された文字列の長さは%d文字です\n",i);
+
+    return 0;
+}
+\end{verbatim}
+\end{itembox}
+
+\subsection{実行結果}
+\begin{itembox}[l]{実行結果}
+\begin{verbatim}
+$ ./e111_2
+１０文字以内の文字列を入力してください--->test
+入力された文字列の長さは4文字です
+\end{verbatim}
+\end{itembox}
+
+\subsection{考察}
+文字列の最後の見えないnull文字を調べれることがわかった。
+
+
+\section{基礎課題２　Lecture5演習1-5}
+\subsection{ソースコード}
+\begin{itembox}[l]{ソースコード}
+\begin{verbatim}
+/*****
+name e111_4
+do 入力された文字を逆順に出力
+in int型 1つ　char型配列１つ
+out 　char型配列１つ
+author 16024003
+day 2016.11.30
+other none
+*****/
+#include <stdio.h>
+#include <string.h>
+int main(void)
+{
+    char str[11];
+    int i;
+
+    printf("10文字以内の文字を入力してください\n--->");
+    scanf("%s",str);
+    printf("逆順に出力すると\n");
+
+    for(i = strlen(str)-1;i >= 0; i--)
+    {
+        printf("%c",str[i]);
+    }
+
+    printf("となります\n");
+
+    return 0;
+
+}
+\end{verbatim}
+\end{itembox}
+
+\subsection{実行結果}
+\begin{itembox}[l]{実行結果}
+\begin{verbatim}
+$ ./e111_4
+10文字以内の文字を入力してください
+--->test
+逆順に出力すると
+tsetとなります
+\end{verbatim}
+\end{itembox}
+
+\subsection{考察}
+for文を使って終端からアクセスしていくことで逆順に出力できることがわかった
+\section{感想}
+配列に文字を入れることで様々な操作が出きることがわかった。
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
