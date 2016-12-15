@@ -1,0 +1,213 @@
+%==========================================================================
+%Template File
+%   Copyright (C) 2006-2009                                
+%           by Shinya Watanabe(sin@csse.muroran-it.ac.jp) 
+%==========================================================================
+\documentclass[a4j,titlepage]{jarticle}
+\usepackage{programing_report}
+\usepackage{itembkbx}
+\begin{document}
+
+%--------------------
+%以下に実験レポートのタイトル,自分のクラス名，学籍番号，氏名，提出日を書く．
+%--------------------
+
+%%\title{レポートタイトル}を記述する．
+\title{第9回 プログラミング演習 レポート}
+
+%%\author{クラス名}{学籍番号}{氏名}を記述する．
+\author{前半クラス16024003}{赤堀　冴太朗}
+
+%%\date{提出する年月日}を記述する．
+\date{2016 年 １２ 月15 日}
+\maketitle
+
+%--------------------
+%以下から本文を開始する．
+%--------------------
+
+\section{基礎課題1　Lecture6練習問題１}
+\subsection{ソースコード}
+\begin{breakitembox}[l]{ソースコード}
+\begin{verbatim}
+
+/*****
+name renshu4-1
+do x,yの計算
+in int型配列　２つ
+out x,y
+author 16024003
+day 2016.12.7
+other none
+*****/
+#include <stdio.h>
+int Delta(int a,int b,int c,int d);
+
+int main(void)
+{
+    int f1[3],f2[3],i;
+    double x,y;
+
+    printf("2つの方程式を入力してください\nax+by=h ");
+    for(i=0;i<3;i++)
+    {
+        scanf("%d",&f1[i]);
+    }
+    printf("cx+dy=k ");
+        for(i=0;i<3;i++)
+    {
+        scanf("%d",&f2[i]);
+    }
+
+    if(Delta(f1[0],f1[1],f2[0],f2[1])==0)
+    {
+        printf("ERROR!ad-bc=0になる連立方程式です\n");
+    }
+    else 
+    {
+        x=(f1[2]*f2[1]-f1[1]*f2[2])/Delta(f1[0],f1[1],f2[0],f2[1]);
+        y=(f1[0]*f2[2]-f1[2]*f2[0])/Delta(f1[0],f1[1],f2[0],f2[1]);
+        printf("xの値は%f,yの値は%fです。\n",x,y);
+    }
+    return 0;
+}
+
+int Delta(int a,int b,int c,int d)
+{
+    int delta;
+
+    delta=a*d-b*c;
+    return delta;
+}
+
+
+\end{verbatim}
+\end{breakitembox}
+
+\subsection{実行結果}
+\begin{itembox}[l]{実行結果}
+\begin{verbatim}
+$ ./renshu4-1
+2つの方程式を入力してください
+ax+by=h 1 2 3
+cx+dy=k 1 2 3
+0ERROR!ad-bc=0になる連立方程式です
+
+$ ./renshu4-1
+2つの方程式を入力してください
+ax+by=h 1 2 3
+cx+dy=k 4 5 6
+-3xの値は-1.000000,yの値は2.000000です。
+\end{verbatim}
+\end{itembox}
+
+\subsection{考察}
+関数に要素を４つ与えるのが手間だった。
+
+\section{基礎課題2 Lecture6練習問題2}
+\subsection{ソースコード}
+\begin{breakitembox}[l]{ソースコード}
+\begin{verbatim}
+
+/*****
+name renshu4-2.c
+do x,yの計算
+in int型配列 2つ
+out x,y
+author 16024003
+day 2016.11.9
+other none 
+*****/
+#include <stdio.h>
+int product(int n,int m);
+
+int Delta(int g1[2] ,int g2[2]);
+
+int main(void)
+{
+    int f1[3],f2[3],i,delta;
+    double x,y;
+
+    i=0;
+
+    printf("2つの方程式を入力してください\nax+by=h ");
+    for(i=0;i<3;i++)
+    {
+        scanf("%d",&f1[i]);
+    }
+    printf("cx+dy=k ");
+        for(i=0;i<3;i++)
+    {
+        scanf("%d",&f2[i]);
+    }
+
+    delta=Delta(f1,f2);
+
+    if(delta==0)
+    {
+        printf("ERROR!ad-bc=0になる連立方程式です\n");
+    }
+    else 
+    {
+        x=(f1[2]*f2[1]-f1[1]*f2[2])/delta;
+        y=(f1[0]*f2[2]-f1[2]*f2[0])/delta;
+        printf("xの値は%f,yの値は%fです。\n",x,y);
+    }
+    return 0;
+}
+
+int Delta(int g1[2] ,int g2[2])
+{
+    int delta;
+
+    delta=g1[0]*g2[1]-g1[1]*g2[0];
+    return delta;
+}
+\end{verbatim}
+\end{breakitembox}
+
+\subsection{実行結果}
+\begin{itembox}[l]{実行結果}
+\begin{verbatim}
+$ ./renshu4-2
+2つの方程式を入力してください
+ax+by=h 1 2 3
+cx+dy=k 1 2 3
+ERROR!ad-bc=0になる連立方程式です
+
+$ ./renshu4-2
+2つの方程式を入力してください
+ax+by=h 1 2 3
+cx+dy=k 4 5 6
+xの値は-1.000000,yの値は2.000000です。
+\end{verbatim}
+\end{itembox}
+
+\subsection{考察}
+ポインタを使おうとしたがうまくいかなかった。ポインタの使い方がよく理解できない。
+\section{感想}
+関数に配列を渡すときの使いかたが分かった。
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

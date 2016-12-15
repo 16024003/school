@@ -1,0 +1,205 @@
+%==========================================================================
+%Template File
+%   Copyright (C) 2006-2009                                
+%           by Shinya Watanabe(sin@csse.muroran-it.ac.jp) 
+%==========================================================================
+\documentclass[a4j,titlepage]{jarticle}
+\usepackage{programing_report}
+\usepackage{itembkbx}
+\begin{document}
+
+%--------------------
+%以下に実験レポートのタイトル,自分のクラス名，学籍番号，氏名，提出日を書く．
+%--------------------
+
+%%\title{レポートタイトル}を記述する．
+\title{第８回 プログラミング演習 レポート}
+
+%%\author{クラス名}{学籍番号}{氏名}を記述する．
+\author{前半クラス16024003}{赤堀　冴太朗}
+
+%%\date{提出する年月日}を記述する．
+\date{2016 年 １２ 月８ 日}
+\maketitle
+
+%--------------------
+%以下から本文を開始する．
+%--------------------
+
+\section{基礎課題１　Lecture6演習1-3}
+\subsection{ソースコード}
+\begin{breakitembox}[l]{ソースコード}
+\begin{verbatim}
+
+/*****
+name e61_2.c
+do 連立方程式の計算
+in int型配列2つ
+out x,yの解
+author 16024003
+day 2016.12.7
+other none
+*****/
+#include <stdio.h>
+int product(int n,int m);
+
+int main(void)
+{
+    int f1[3],f2[3],i,delta;
+    double x,y;
+
+    printf("2つの方程式を入力してください\nax+by=h ");
+    for(i=0;i<3;i++)
+    {
+        scanf("%d",&f1[i]);
+    }
+    printf("cx+dy=k ");
+        for(i=0;i<3;i++)
+    {
+        scanf("%d",&f2[i]);
+    }
+
+    delta=product(f1[0],f2[1])-product(f1[1],f2[0]);
+
+    if(delta==0)
+    {
+        printf("ERRAR!ad-bc=0になる連立方程式です\n");
+    }
+    else 
+    {
+        x=(product(f1[2],f2[1])-product(f1[1],f2[2]))/delta;
+        y=(product(f1[0],f2[2])-product(f1[2],f2[0]))/delta;
+        printf("xの値は%f,yの値は%fです。\n",x,y);
+    }
+    return 0;
+}
+
+演習
+int product(int n,int m)
+{
+    int h;
+
+    h=n*m;
+    return h;
+}
+\end{verbatim}
+\end{breakitembox}
+
+\subsection{実行結果}
+\begin{itembox}[l]{実行結果}
+\begin{verbatim}
+$ ./e61_2
+2つの方程式を入力してください
+ax+by=h 2 4 7
+cx+dy=k 4 8 9
+ERRAR!ad-bc=0になる連立方程式です
+
+$ ./e61_2
+2つの方程式を入力してください
+ax+by=h 1 2 3
+cx+dy=k 4 5 6
+xの値は-1.000000,yの値は2.000000です。
+\end{verbatim}
+\end{itembox}
+
+\subsection{考察}
+解を求める式の規則性がわからなかった
+
+\section{基礎課題２ Lecture6演習2-3}
+\subsection{ソースコード}
+\begin{breakitembox}[l]{ソースコード}
+\begin{verbatim}
+
+/*****
+name e63
+do 任意の数字のソート
+in int型配列1つ,int型１つ
+out 小さい数字からのソート
+author 16024003
+day 2016.１２.７
+other none 
+*****/
+#include <stdio.h>
+void swap(int *x, int *y);
+
+main (void){
+    int n,i,j,flag=1;
+    printf("入力する数字の個数を入力してください");
+    scanf("%d",&n);
+    int m[n];
+    printf("数字を入力してください");
+    for(i=0;i<n;i++){
+        scanf("%d",&m[i]);
+    }
+
+    while(flag>0){
+        flag=0;
+        for(i=0;i<n-1;i++){
+            if(m[i]>m[i+1]){
+                swap(&m[i],&m[i+1]);
+                flag++;
+            }
+        }
+    }
+    printf("小さい順に並べると ");
+    for(i=0;i<n;i++){
+        printf("%d ",m[i]);
+    }
+    printf("です\n");
+
+    return 0;
+}
+
+void swap(int *x, int *y){
+    int temp;
+    
+    temp=*x;
+    *x=*y;
+    *y=temp;
+
+}
+\end{verbatim}
+\end{breakitembox}
+
+\subsection{実行結果}
+\begin{itembox}[l]{実行結果}
+\begin{verbatim}
+$ ./e63
+入力する数字の個数を入力してください5
+数字を入力してください3
+5
+43
+7
+23
+小さい順に並べると 3 5 7 23 43 です
+\end{verbatim}
+\end{itembox}
+
+\subsection{考察}
+ポインタの使い方がいまいち理解できなかった
+\section{感想}
+比較的コードが長くなってしまって、デバックが大変だった。
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
