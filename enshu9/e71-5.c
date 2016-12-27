@@ -1,21 +1,29 @@
 #include<stdio.h>
 #include<math.h>
 
-int factorial(int n);
+double factorial(int n);
 double MaclaurinExp(int x,int i);
 
 int main(void)
 {
-    int x;
+    int x,i;
     printf("exp(x)をマクローリン展開で求めます。xを入力してください。");
     scanf("%d",&x);
     printf("exp(%d)の値は %f です。\n",x,MaclaurinExp(x,20));
+    double exp_t=0;
+    for(i=0;i<=20;i++)
+    {
+        exp_t+=pow(x,i)/factorial(i);
+    }
+    printf("%f",exp_t);
+
+    return 0;
 
 }
 
-int factorial(int n)
+double factorial(int n)
 {
-    int fact;
+    double fact;
 
     if (n==0)
     {
@@ -40,8 +48,7 @@ double MaclaurinExp(x,i)
     }
     else
     {
-        Exp=pow(x,i)/factorial(i);
-        Exp+=MaclaurinExp(x,i-1);
+        Exp+=MaclaurinExp(x,i-1)+pow(x,i)/factorial(i);
     }
     return Exp;
 }
