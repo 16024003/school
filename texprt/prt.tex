@@ -13,33 +13,61 @@
 %--------------------
 
 %%\title{レポートタイトル}を記述する．
-\title{第８回 プログラミング演習 レポート}
+\title{第10回 プログラミング演習 レポート}
 
 %%\author{クラス名}{学籍番号}{氏名}を記述する．
 \author{前半クラス16024003}{赤堀　冴太朗}
 
 %%\date{提出する年月日}を記述する．
-\date{2016 年 １２ 月８ 日}
+\date{2017 年 1 月 5 日}
 \maketitle
 
 %--------------------
 %以下から本文を開始する．
 %--------------------
 
-\section{}
+\section{基礎課題１　lectuer7 演習１ー３}
 \subsection{ソースコード}
 \begin{breakitembox}[l]{ソースコード}
 \begin{verbatim}
 
 /*****
-name 
-do 
-in 
-out 
+name e34-1.c
+do 未来の人口を計算
+in int型1つ
+out double型1つ
 author 16024003
 day 2016.12.7
 other none
 *****/
+#include<stdio.h>
+double power(int n);
+
+int main(void)
+{
+    int n;
+    double pop;
+    printf("１９９４年からn年後の人口を予想します。nを入力してください　");
+    scanf("%d",&n);
+    pop=567*power(n);
+    printf("%d年の人口予想は%f千万人です。\n",1994+n,pop);
+
+    return 0;
+}
+
+double power(int n)
+{
+    double popmag;
+    if(n==0)
+    {
+        return 1;
+    }
+    else
+    {
+        popmag=power(n-1)*1.016;
+    }
+    return popmag;
+}
 
 \end{verbatim}
 \end{breakitembox}
@@ -47,69 +75,155 @@ other none
 \subsection{実行結果}
 \begin{itembox}[l]{実行結果}
 \begin{verbatim}
+$ ./e34-1
+１９９４年からn年後の人口を予想します。nを入力してください　10
+2004年の人口予想は664.538487千万人です。
 
+$ ./e34-1
+１９９４年からn年後の人口を予想します。nを入力してください　5
+1999年の人口予想は613.834931千万人です。
 \end{verbatim}
 \end{itembox}
 
 \subsection{考察}
+再帰関数を利用してfor文と同じ処理ができた。
 
-
-\section{}
+\section{基礎課題２ lectuer7 演習2-2}
 \subsection{ソースコード}
 \begin{breakitembox}[l]{ソースコード}
 \begin{verbatim}
 
 /*****
-name 
-do 
-in 
-out 
+name e72-1.c
+do ポインタの利用 
+in none
+out double型1つ
 author 16024003
 day 2016.11.9
 other none 
 *****/
+#include<stdio.h>
 
+int main(void)
+{
+    double x =3.14;
+    double *p;
+
+    p=&x;
+
+    printf("変数xのアドレスは%pです。\n",p);
+    printf("変数xの中身は%fです\n",*p);
+
+    x=2.7;
+
+
+    printf("変数xの中身は%pです。\n",p);
+    printf("変数xの中身は%fです。\n",*p);
+
+    return 0;
+}
 \end{verbatim}
 \end{breakitembox}
 
 \subsection{実行結果}
 \begin{itembox}[l]{実行結果}
 \begin{verbatim}
-
+$ ./e72-1
+変数xのアドレスは0x7fff9aa958b0です。
+変数xの中身は3.140000です
+変数xの中身は0x7fff9aa958b0です。
+変数xの中身は2.700000です。
 \end{verbatim}
 \end{itembox}
 
 \subsection{考察}
+ポインタを利用してアドレスは変化せずに中身だけを変える方法がわかった。
 
-\section{}
+\section{応用課題　lectuer7 演習1-6}
 \subsection{ソースコード}
 \begin{breakitembox}[l]{ソースコード}
 \begin{verbatim}
 
 /*****
-name 
-do 
-in 
-out 
+name e71-6.c
+do cos(x)の計算
+in double型1つ
+out double型1つ
 author 16024003
 day 2016.12.7
 other none
 *****/
+#include<stdio.h>
+#include<math.h>
+#define PAI 3.14159265358979
+#define DEG_RAD (PAI/180.0)
 
+double factorial(int n);
+double MaclaurinCos(double x,int i);
+
+int main(void)
+{
+    int cosvar;
+    printf("sin(x)とcos(x)をマクローリン展開で求めます。xを弧度法で入力してください。\n");
+    printf("cos(x)のx=");
+    scanf("%d",&cosvar);
+    printf("cos(%d)の値は %f です。\n",cosvar,MaclaurinCos(cosvar*DEG_RAD,20));
+}
+
+double factorial(int n)
+{
+    double fact;
+
+    if (n==0)
+    {
+        return 1;
+    }
+    else
+    {
+        fact=n*factorial(n-1);
+    }
+
+    return fact;
+}
+
+double MaclaurinCos(double x,int i)
+{
+    double Cos=0;
+    if(i==0)
+    {
+        return 1;
+    }
+    else
+    {
+        Cos+=MaclaurinCos(x,i-1)+pow(-1,i)*pow(x,2*i)/factorial(2*i);
+    }
+    return Cos;
+}
 \end{verbatim}
 \end{breakitembox}
 
 \subsection{実行結果}
 \begin{itembox}[l]{実行結果}
 \begin{verbatim}
+$ ./e71-6
+sin(x)とcos(x)をマクローリン展開で求めます。xを弧度法で入力してください
+。
+cos(x)のx=60
+cos(60)の値は 0.500000 です。
 
+$ ./e71-6
+sin(x)とcos(x)をマクローリン展開で求めます。xを弧度法で入力してください
+。
+cos(x)のx=90
+cos(90)の値は 0.000000 です。
 \end{verbatim}
 \end{itembox}
 
 \subsection{考察}
-
+Cosの値を＝０にしないとうまく動かなかった。
 
 \section{感想}
+オーバーフロー処理を調べたがわけがわからなかった。
 
 \end{document}
 
