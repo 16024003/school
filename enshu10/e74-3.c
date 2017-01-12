@@ -7,7 +7,8 @@ int main(void)
     double a[6],*p;
     int n,i;
 
-    n=sizeof(a)/sizeof(a[0]);
+    n=sizeof(a)/sizeof(double);
+    printf("配列の要素の数は%dです。",n);
     init_val(a,n);
     printf("配列の要素の数は%dです。",n);
     printf("各配列要素の中身は次のとおりです。/n");
