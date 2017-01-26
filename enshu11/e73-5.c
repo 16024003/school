@@ -8,12 +8,12 @@ int main(void)
     int i;
     int flag=1;
 
-    printf("aaaa\n");
+    printf("文字列を辞書順にソートします。半角20文字以内で10個入力してください。\n");
     for(i=0;i<10;i++)
     {
         scanf("%20s",&str[i][0]);
     }
-    printf("bbbbb\n");
+    printf("文字列を辞書順にソートすると\n");
 
     while(flag==1)
     {
@@ -22,7 +22,7 @@ int main(void)
         {
             if(strcmp(&str[i][0],&str[i+1][0])>0)
             {
-                strcpy(temp,&str[i][0]);
+                strcpy(temp,&str[i][0]);  
                 strcpy(&str[i][0],&str[i+1][0]);
                 strcpy(&str[i+1][0],temp);
                 flag=1;

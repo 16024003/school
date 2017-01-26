@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.1415926-p3.3-110825-2.4 (utf8.euc) (TeX Live 2012/Debian) (format=platex 2013.12.9)  26 JAN 2017 13:04
+This is e-pTeX, Version 3.1415926-p3.3-110825-2.4 (utf8.euc) (TeX Live 2012/Debian) (format=platex 2013.12.9)  19 JAN 2017 13:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -292,15 +292,15 @@ LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 30.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 30.
- [1] [2]
-(./prt.aux) ) 
+ [1] [2] [3]
+[4] (./prt.aux) ) 
 Here is how much of TeX's memory you used:
  2719 strings out of 495286
  29696 string characters out of 3186620
- 114234 words of memory out of 3000000
+ 120234 words of memory out of 3000000
  6005 multiletter control sequences out of 15000+200000
  13630 words of font info for 57 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,8n,26p,241b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,8n,26p,241b,331s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on prt.dvi (3 pages, 4884 bytes).
+Output written on prt.dvi (5 pages, 9116 bytes).
