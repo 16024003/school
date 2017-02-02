@@ -6,16 +6,14 @@ int GetRandom(int min,int max);
 int main(void)
 {
     char str[30];
-    char reword[5][10];
-    char word[10];
+    char reword[5][100];
     int flag=0;
     int i=0;
     FILE *fp;
 
     fp=fopen("random.txt","r");
-    while(fgets(word,10,fp)!=NULL)
+    while(fgets(reword[i],90,fp)!=NULL)
     {
-        reword[i][10]=word[10];
         i++;
     }
 
@@ -23,7 +21,7 @@ int main(void)
     {
         printf("you: ");
         scanf("%s",str);
-        printf("bot: %s\n",reword[GetRandom(0,i)]);
+        printf("bot: %s\n",reword[GetRandom(0,4)]);
         if(strcmp("ばいばい",str)==0 || strcmp("じゃあね",str)==0 || strcmp("おわり",str)==0)
         {
             flag=1;
@@ -35,5 +33,5 @@ int main(void)
 
 int GetRandom(int min,int max)
 {
-    return min+(int)(rand()*(max-min+1.0)/(1.0+RAND_MAX));
+    return min+rand()%(max-min+1);
 }
